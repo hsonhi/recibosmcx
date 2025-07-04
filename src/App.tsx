@@ -10,9 +10,9 @@ import {
   faKey,
 } from "@fortawesome/free-solid-svg-icons";
 
-const UPLOAD_ENDPOINT = "https://localhost:7094/decrypto/upload";
+const UPLOAD_ENDPOINT = "https://localhost:7094";
 
-function FileUploader() {
+function DeCryptoReact() {
   const [file, setFile] = useState<any>(null);
   const [status, setStatus] = useState("Nao foram encontradas assinaturas");
   const [data, setPosts] = useState([]);
@@ -29,7 +29,7 @@ function FileUploader() {
     formData.append("file", file);
 
     const resp = await axios
-      .post(UPLOAD_ENDPOINT, formData, {
+      .post(UPLOAD_ENDPOINT + "/decrypto/upload", formData, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: null,
@@ -163,8 +163,8 @@ function FileUploader() {
           <p>
             <FontAwesomeIcon icon={faExternalLink} />
             &nbsp;
-            <a href="http://localhost:5174/" target="_blank">
-              <b>http://localhost:5174/</b>
+            <a href={UPLOAD_ENDPOINT + "/swagger"} target="_blank">
+              <b>{UPLOAD_ENDPOINT + "/swagger"}</b>
             </a>
           </p>
         </div>
@@ -173,4 +173,4 @@ function FileUploader() {
   );
 }
 
-export default FileUploader;
+export default DeCryptoReact;
