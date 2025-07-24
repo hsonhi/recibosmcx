@@ -1,6 +1,6 @@
 ## DeCrypto React page
 
-A React page for the DeCrypto WebAPI frontend UI built with React/Vite, TypeScript and Tailwind
+A React page for the DeCrypto .NET Core WebAPI, built with React, Vite, TypeScript and Tailwind
 
 ### Quick setup
 
