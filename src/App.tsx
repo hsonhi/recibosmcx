@@ -61,7 +61,7 @@ function DeCryptoReact() {
   return (
     <div className="py-24 px-4">
       <h1 className="text-3xl font-bold text-center">
-        <FontAwesomeIcon icon={faKey} /> DeCrypto
+        <FontAwesomeIcon icon={faKey} /> PDF Validator
       </h1>
       <h1 className="text-center mt-1">
         Valide assinaturas criptográficas em documentos digitais e recibos de
