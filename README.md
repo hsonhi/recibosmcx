@@ -1,4 +1,4 @@
-## DeCrypto React page
+## PDF validator React page
 
 A React page for the PDF validator WebAPI, built with React, Vite, TypeScript and Tailwind
 
