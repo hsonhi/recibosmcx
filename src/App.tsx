@@ -10,7 +10,7 @@ import {
   faKey,
 } from "@fortawesome/free-solid-svg-icons";
 
-const UPLOAD_ENDPOINT = "https://localhost:7094";
+const UPLOAD_ENDPOINT = "http://localhost:5225";
 
 function DeCryptoReact() {
   const [file, setFile] = useState<any>(null);
@@ -29,25 +29,24 @@ function DeCryptoReact() {
     formData.append("file", file);
 
     const resp = await axios
-      .post(UPLOAD_ENDPOINT + "/decrypto/upload", formData, {
+      .post(UPLOAD_ENDPOINT + "/pdfvalidator/upload", formData, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: null,
         },
       })
       .then((response) => {
-        setPosts(response.data.pdfSignatureInfo);
+        console.log(response);
+        setPosts(response.data.pdfSigner);
         setSigner(
-          response.data.pdfSignatureInfo.signer
-            ? response.data.pdfSignatureInfo.signer
+          response.data.pdfSigner.signerInfo
+            ? response.data.pdfSigner.signerInfo
             : null
         );
-        setDate(response.data.pdfSignatureInfo.date);
-        setAlgorithm(response.data.pdfSignatureInfo.encryptionAlgorithm);
-        setisFoundVisible(response.data.pdfSignatureInfo.signer ? true : false);
-        setisNotFoundVisible(
-          response.data.pdfSignatureInfo.signer ? false : true
-        );
+        setDate(response.data.pdfSigner.date);
+        setAlgorithm(response.data.pdfSigner.encryptionAlgorithm);
+        setisFoundVisible(response.data.pdfSigner.signerInfo ? true : false);
+        setisNotFoundVisible(response.data.pdfSigner.signerInfo ? false : true);
         setStatus("Não foram encontradas assinaturas");
       })
       .catch((error) => {
@@ -61,7 +60,7 @@ function DeCryptoReact() {
   return (
     <div className="py-24 px-4">
       <h1 className="text-3xl font-bold text-center">
-        <FontAwesomeIcon icon={faKey} /> PDF Validator
+        <FontAwesomeIcon icon={faKey} /> PDF Validator Service
       </h1>
       <h1 className="text-center mt-1">
         Valide assinaturas criptográficas em documentos digitais e recibos de
@@ -75,20 +74,14 @@ function DeCryptoReact() {
           </h1>
           <p className="text-[16px] text-[#999999] font-normal mt-1">
             Adicione um documento para verificar a sua assinatura.
+            <img
+              src={pdfImg}
+              alt="PDF Validator Service"
+              className="mx-auto mt-2"
+              width={64}
+            />
           </p>
         </div>
-
-        <table className="content-center border-1 border-solid w-[95%]">
-          <tr>
-            <td className="text-right float-right">
-              <img src={pdfImg} width={64} />
-            </td>
-            <td>
-              <img src={webserviceImg} width={58} />
-            </td>
-          </tr>
-        </table>
-
         <div className="overflow-x-auto">
           {isNotFoundVisible ? (
             <div className="mt-3 relative border p-[10px] rounded-[10px] cursor-pointer transition-all border-[#343437] hover:bg-[#3d3d41]">
