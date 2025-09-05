@@ -1,6 +1,6 @@
 ## PDF validator React page
 
-PDF validator WebAPI frontend page built with React, Vite, TypeScript and Tailwind
+PDF validator WebAPI frontend page built with React, Vite, TypeScript and Tailwind.
 
 ### Quick setup
 
