@@ -160,7 +160,7 @@ function RecibosMCX() {
      <h1 className="text-[24px] text-[#ddd] font-medium">
            Consultas
           </h1>
-          <h1 className="text-[24px] text-[#ddd] text-8xl mt-3 text-center bold">
+          <h1 className="text-[24px] text-[#ddd] text-7xl mt-3 text-center bold">
           <strong> {requests}</strong>
       </h1>
      </div>
