@@ -1,6 +1,6 @@
-## PDF validator React page
+## Recibos MCX Express
 
-PDF validator WebAPI frontend page built with React, Vite, TypeScript and Tailwind.
+Recibos MCX Express UI page built with React, Vite, TypeScript and Tailwind.
 
 ### Quick setup
 
@@ -11,6 +11,7 @@ npm install
 Check for available environments: # npm run
 # npm run dev
 ```
+
 ### Configs
 
 ```javascript
