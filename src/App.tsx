@@ -10,7 +10,7 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
-const UPLOAD_ENDPOINT = "http://recibosmcx.runasp.net";
+const UPLOAD_ENDPOINT = "https://recibosmcx.bsite.net";
 
 function RecibosMCX() {
   const [file, setFile] = useState<any>(null);
@@ -160,7 +160,7 @@ function RecibosMCX() {
      <h1 className="text-[24px] text-[#ddd] font-medium">
            Consultas
           </h1>
-          <h1 className="text-[24px] text-[#ddd] text-7xl mt-3 text-center bold">
+          <h1 className="text-[24px] text-[#ddd]  text-[80px] mt-3 text-center bold">
           <strong> {requests}</strong>
       </h1>
      </div>
