@@ -1,55 +1,62 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import webserviceImg from "./assets/images/mxexpress.png";
-import pdfImg from "./assets/images/pdf.png";
+import QrImg from "./assets/images/qr.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faExternalLink,
   faCheckDouble,
   faTimes,
-  faKey,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
-const UPLOAD_ENDPOINT = "http://localhost:5225";
+const UPLOAD_ENDPOINT = "http://recibosmcx.runasp.net";
 
-function DeCryptoReact() {
+function RecibosMCX() {
   const [file, setFile] = useState<any>(null);
-  const [status, setStatus] = useState("Nao foram encontradas assinaturas");
+  const [status, setStatus] = useState("Documento inválido!");
   const [data, setPosts] = useState([]);
   const [Date, setDate] = useState("");
   const [Signer, setSigner] = useState("");
   const [Algorithm, setAlgorithm] = useState("");
   const [isNotFoundVisible, setisNotFoundVisible] = useState(false);
   const [isFoundVisible, setisFoundVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [requests, setRequests] = useState(0);
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
-    setStatus(""); // Reset status
+    setStatus(""); 
     event.preventDefault();
+    setIsLoading(true);
+    setisFoundVisible(false);
+    setisNotFoundVisible(false);
     const formData = new FormData();
     formData.append("file", file);
 
     const resp = await axios
-      .post(UPLOAD_ENDPOINT + "/pdfvalidator/upload", formData, {
+      .post(UPLOAD_ENDPOINT + "/RecibosMCX/validate", formData, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: null,
         },
       })
       .then((response) => {
-        console.log(response);
-        setPosts(response.data.pdfSigner);
+        setIsLoading(false);
+        setPosts(response.data.signer);
         setSigner(
-          response.data.pdfSigner.signerInfo
-            ? response.data.pdfSigner.signerInfo
+          response.data.signer.info
+            ? response.data.signer.info
             : null
         );
-        setDate(response.data.pdfSigner.date);
-        setAlgorithm(response.data.pdfSigner.encryptionAlgorithm);
-        setisFoundVisible(response.data.pdfSigner.signerInfo ? true : false);
-        setisNotFoundVisible(response.data.pdfSigner.signerInfo ? false : true);
-        setStatus("Não foram encontradas assinaturas");
+        setDate(response.data.signer.date);
+        setAlgorithm(response.data.signer.encryptionAlgorithm);
+        setisFoundVisible(response.data.signer.info ? true : false);
+        setisNotFoundVisible(response.data.signer.info ? false : true);
+        setStatus("Documento inválido!");
+        fetchData();
       })
       .catch((error) => {
+        setIsLoading(false);
         setPosts(error.response.data);
         setisFoundVisible(false);
         setisNotFoundVisible(true);
@@ -57,66 +64,59 @@ function DeCryptoReact() {
       });
   };
 
+  //useEffect(() => {
+  // This effect runs once after the initial render (like componentDidMount)
+  // and whenever its dependencies change (empty array means no dependencies, so it runs only once)
+  const fetchData = async () => {
+    const response = await fetch(UPLOAD_ENDPOINT + "/RecibosMCX/requests");
+    const data = await response.json();
+    setRequests(data.length); 
+  };
+  fetchData(); 
+  //}, []); // Empty dependency array ensures this effect runs only once after initial render
+
+
   return (
-    <div className="py-24 px-4">
-      <h1 className="text-3xl font-bold text-center">
-        <FontAwesomeIcon icon={faKey} /> PDF Validator Service
+    <div className="mt-8 px-4">
+      <h1 className="text-3xl font-bold text-center text-up">
+      <img src={webserviceImg} alt="MCX Express" className=" mb-4 inline" width={64} />
+      <br/>
+      Recibos MCX Express
       </h1>
       <h1 className="text-center mt-1">
-        Valide assinaturas criptográficas em documentos digitais e recibos de
-        pagamentos
-      </h1>
-
-      <main className="text-center max-w-[1280px] my-14 mx-auto p-5 bg-[#222124] flex flex-col gap-5 rounded-[10px]">
+       </h1>
+      <p className="text-[16px] text-center text-[#333] font-normal mt-3">Plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS.</p>
+      <main className="text-center max-w-[920px] border my-6 mx-auto p-5 bg-[#222124] flex flex-col rounded-[10px]">
         <div>
-          <h1 className="text-[24px] text-[#FBF8FB] font-medium">
-            Adicionar arquivo
+          <h1 className="text-[24px] text-[#ddd] font-medium">
+            Adicionar documento
           </h1>
-          <p className="text-[16px] text-[#999999] font-normal mt-1">
-            Adicione um documento para verificar a sua assinatura.
-            <img
-              src={pdfImg}
-              alt="PDF Validator Service"
-              className="mx-auto mt-2"
-              width={64}
-            />
-          </p>
         </div>
         <div className="overflow-x-auto">
           {isNotFoundVisible ? (
             <div className="mt-3 relative border p-[10px] rounded-[10px] cursor-pointer transition-all border-[#343437] hover:bg-[#3d3d41]">
-              <span className="flex items-center text-sm  gap-1 px-3 py-[6px] text-[12px] text-[#fff] bg-[rgba(255,49,49,0.38)] rounded-[32px]">
+              <span className="flex items-center text-sm  gap-1 px-3 py-[6px] text-[12px] text-[#fff] bg-[rgba(255,49,49,0.88)] rounded-[32px]">
                 <FontAwesomeIcon icon={faTimes} size="2x" />
                 <span>{status}</span>
               </span>
             </div>
           ) : null}
-
           {isFoundVisible ? (
             <div className="mt-3 relative border p-[10px] rounded-[10px] cursor-pointer transition-all border-[#343437] hover:bg-[#3d3d41]">
-              <span className="flex items-center text-sm  gap-1 px-3 py-[6px] text-[12px] text-[#fff] bg-[rgba(50,205,50,0.28)] rounded-[32px]">
+              <span className="flex items-center text-sm  gap-1 px-3 py-[6px] text-[12px] text-[#fff] bg-[rgba(50,205,50,0.88)] rounded-[32px]">
                 <FontAwesomeIcon icon={faCheckDouble} size="2x" />
-                <span>Assinatura(s) válida</span>
+                <span>Documento válido!</span>
               </span>
               <pre className="p-4">
-                <table className="mt-3 ">
+                <table className="mt-3 text-[#fff]">
                   <tr>
                     <td>Data:</td>
                     <td>{Date}</td>
-                  </tr>
-                  <tr>
-                    <td>Assinante:</td>
-                    <td>{Signer}</td>
-                  </tr>
-                  <tr>
-                    <td>Algoritmo:</td>
-                    <td>{Algorithm}</td>
                   </tr>
                 </table>
               </pre>
             </div>
           ) : null}
-
           <form onSubmit={handleSubmit}>
             <div className="flex items-center justify-center w-full">
               <input
@@ -136,24 +136,53 @@ function DeCryptoReact() {
                 }
               />
             </div>
+<div role="alert" className=" mt-3   text-xs text-[gray] rounded relative" >
+  <strong className="font-bold">Formato: </strong>
+  <span className="block sm:inline">PDF, 2MB</span>
+</div>
+ {isLoading && <p className="mt-2"></p>}
+        { isLoading && <FontAwesomeIcon className="text-[grey]" icon={faSpinner} spin  size="2x" />}
+        {isLoading && <div className="spinner"></div>}
             <button
               type="submit"
               className="mt-4  w-36 h-10 text-[14px] py-2 px-4 rounded-[8px] transition-colors bg-orange-500 text-white"
-              disabled={!file}
-            >
-              Carregar
+              disabled={!file}>
+              Validar
             </button>
           </form>
         </div>
       </main>
 
-      <main className="max-w-[1280px]  my-14 mx-auto p-5 bg-[#222124] flex flex-col gap-9 rounded-[10px]">
+
+ <main className="max-w-[920px]  my-6 mx-auto   flex flex-col gap-9 rounded-[10px]">
+    <div className="grid lg:grid-cols-2 gap-4">
+    <div className="bg-[#222124] p-5 border p-[10px] rounded-[10px]">
+     <h1 className="text-[24px] text-[#ddd] font-medium">
+           Consultas
+          </h1>
+          <h1 className="text-[24px] text-[#ddd] text-8xl mt-3 text-center bold">
+          <strong> {requests}</strong>
+      </h1>
+     </div>
+     <div className="hidden lg:block bg-[#222124] p-5 border p-[10px] rounded-[10px]">
+          <h1 className="text-[24px] text-[#ddd] font-medium">
+           Acesse pelo seu telemóvel
+          </h1>
+           <h1 className="text-[24px] text-center bold mt-3">
+          <img src={QrImg} alt="MCX Express" className=" text-[#fff] bg-white mb-4 inline rounded-[10px]" width={124} />
+          </h1>
+       </div>
+      </div>
+      </main>
+
+
+      <main className="max-w-[920px]  my-6 mx-auto p-5 bg-[#222124] flex flex-col gap-9 border rounded-[10px]">
         <div>
-          <h1 className="text-[24px] text-[#FBF8FB] font-medium">WebService</h1>
-          <p className="text-[16px] text-[#999999] font-normal mt-1 mb-5">
-            Faça o uso do seguinte serviço para automatizar tarefas.
+          <h1 className="text-[24px] text-[#ddd] font-medium">WebService</h1>
+          <p className="text-[16px] text-[#ddd] font-normal mt-1 mb-5">
+           Se pretende automatizar as suas tarefas faça o uso do seguinte serviço.
           </p>
-          <p>
+          <p  className="text-[#ddd]">
             <FontAwesomeIcon icon={faExternalLink} />
             &nbsp;
             <a href={UPLOAD_ENDPOINT + "/swagger"} target="_blank">
@@ -162,8 +191,10 @@ function DeCryptoReact() {
           </p>
         </div>
       </main>
+
+       <div className="max-w-[920px]  mx-auto">&copy; 2025</div>
     </div>
   );
 }
 
-export default DeCryptoReact;
+export default RecibosMCX;
