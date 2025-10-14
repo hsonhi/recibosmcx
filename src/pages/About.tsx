@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AboutUs = () => {
+const About = () => {
     return (
        <div className="mt-8 px-4 mx-auto max-w-[920px] ">
         <h2 className='text-[24px]'> <b>Sobre a RecibosMCX </b></h2>
@@ -32,4 +32,4 @@ const AboutUs = () => {
     );
 };
 
-export default AboutUs;
+export default About;
