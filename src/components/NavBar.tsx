@@ -32,11 +32,10 @@ const itemArray = [
             return (
               <li key={index} className="hover:text-primary duration-200">
                  {/*No page reloads  <Link to={x.url}>{x.title}</Link> */}
-                <Link to={x.url}>{x.title}</Link>
-                 {/*Page reloads
+                 {/*Page reloads*/}
                   <a href={x.url} className="">
                   {x.title}
-                </a> */}
+                </a> 
               </li>
             );
           })}
@@ -62,7 +61,6 @@ const itemArray = [
               return (
                 <li key={index} className="hover:text-primary duration-200">
                    {/*No page reloads  <Link to={x.url}>{x.title}</Link> */}
-                
                  {/*Page reloads*/}
                   <a href={x.url} className="">
                   {x.title}

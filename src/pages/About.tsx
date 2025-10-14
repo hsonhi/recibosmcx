@@ -8,7 +8,7 @@ const About = () => {
           <p className='mt-4'>Pretendemos prestar um serviço de qualidade de forma rápida, simples e totalmente confiável. A validação de comprovativos é gratuita e de acesso livre, não sendo necessário qualquer tipo de registo ou autenticação para a sua utilização.</p>
         
         <h2 className='text-[24px] mt-6'> <b>Como funciona?</b></h2>
-        <ul className="list-image-[url(./assets/images/list-icon.png)] space-y-4 mt-4 text-[#333]  list-disc list-inside dark:text-gray-400">
+        <ul className="list-image-[url(./assets/images/list-icon.png)] space-y-4 mt-4 text-[#333]  list-disc list-inside">
         <li>
          <b>Adicionar documento</b>
           <ol className="ps-5 mt-2 space-y-1 list-decimal list-inside">
