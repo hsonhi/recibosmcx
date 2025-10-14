@@ -22,7 +22,10 @@ h6 {
 p {
   line-height: 1.5;
 }
-
+a:hover {
+  text-decoration: none;
+  color: orange;
+}
 .slide-in {
   transform: translateY(100%);
   animation: slideUp 0.3s forwards;
@@ -31,4 +34,13 @@ p {
   to {
     transform: translateY(0);
   }
+}
+input[type="file"]::file-selector-button {
+background-color: #ddd;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  /* Apply border-radius to the button */
+  padding: 8px 15px;
+  cursor: pointer;
 }
