@@ -27,7 +27,7 @@ const About = () => {
         </ul>
 
         <h2 className='text-[24px] mt-6'> <b>Webservice</b></h2>
-          <p className="text-[16px] text-[#333] font-normal mt-3">Oferecemos uma API de forma gratuita para automatizar tarefas exigentes, o mesmo dispõe de alta disponibilidade e baixa latência.</p>
+          <p className="text-[16px] text-[#333] font-normal mt-3">Oferecemos uma API de forma gratuita para automatizar tarefas exigentes, a mesma dispõe de alta disponibilidade e baixa latência.</p>
         </div>
     );
 };
