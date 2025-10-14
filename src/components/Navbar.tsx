@@ -7,8 +7,6 @@ import {
   faBars
 } from "@fortawesome/free-solid-svg-icons";
 
-
-
 const Navbar = () => {
 
 const itemArray = [
@@ -17,7 +15,7 @@ const itemArray = [
   { title: 'Contactos', url: '/contact' },
 ];
 
- const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen((prev) => !prev);
