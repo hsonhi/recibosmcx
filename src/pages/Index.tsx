@@ -51,9 +51,6 @@ const itemArray = [
     const formData = new FormData();
     formData.append("file", file);
 
-    
-
-
     const resp = await axios
       .post(UPLOAD_ENDPOINT + "/RecibosMCX/validate", formData, {
         headers: {
@@ -114,7 +111,7 @@ const itemArray = [
         </div>
         <div className="overflow-x-auto">
           {isNotFoundVisible ? (
-            <div className="mt-3 relative border p-[10px] rounded-[10px] cursor-pointer transition-all border-[#343437] hover:bg-[#3d3d41]">
+            <div className="mt-3 relative border p-[10px] rounded-[10px] transition-all border-[#343437] hover:bg-[#3d3d41]">
               <span className="flex items-center text-sm  gap-1 px-3 py-[6px] text-[12px] text-[#fff] bg-[rgba(255,49,49,0.88)] rounded-[32px]">
                 <FontAwesomeIcon icon={faTimes} size="2x" />
                 <span>{status}</span>
@@ -122,7 +119,7 @@ const itemArray = [
             </div>
           ) : null}
           {isFoundVisible ? (
-            <div className="mt-3 relative border p-[10px] rounded-[10px] cursor-pointer transition-all border-[#343437] hover:bg-[#3d3d41]">
+            <div className="mt-3 relative border p-[10px] rounded-[10px]  transition-all border-[#343437] hover:bg-[#3d3d41]">
               <span className="flex items-center text-sm  gap-1 px-3 py-[6px] text-[12px] text-[#fff] bg-[rgba(50,205,50,0.88)] rounded-[32px]">
                 <FontAwesomeIcon icon={faCheckDouble} size="2x" />
                 <span>Documento válido!</span>
@@ -138,8 +135,6 @@ const itemArray = [
             </div>
           ) : null}
           
-
-
           <form onSubmit={handleSubmit}>
             <div className="flex items-center justify-center w-full">
               <input
