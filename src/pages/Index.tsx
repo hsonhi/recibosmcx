@@ -99,9 +99,10 @@ const itemArray = [
 
   return (
     <div className="mt-8 px-4">
-      <p className="mx-auto max-w-[920px] text-[16px] text-center text-[#333] font-normal mt-3">
-        A RecibosMCX é uma plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS.</p>
-      <main className="text-center max-w-[920px] border my-6 mx-auto p-5 bg-[#222124] flex flex-col rounded-[10px]">
+     {/* <p className="mx-auto max-w-[920px] text-[16px] text-center text-[#333] font-normal mt-3">
+        A RecibosMCX é uma plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS.</p> 
+     */}
+     <main className="text-center max-w-[920px] border my-6 mx-auto p-5 bg-[#222124] flex flex-col rounded-[10px]">
         <div>
           <h1 className="text-[24px] text-[#ddd] font-medium">
             Adicionar documento
