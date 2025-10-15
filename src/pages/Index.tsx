@@ -43,8 +43,8 @@ const itemArray = [
     setIsOpen((prev) => !prev);
   };
   const handleSubmit = async (event: { preventDefault: () => void }) => {
-    setStatus(""); 
     event.preventDefault();
+    setStatus(""); 
     setIsLoading(true);
     setisFoundVisible(false);
     setisNotFoundVisible(false);
