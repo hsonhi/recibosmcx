@@ -38,7 +38,6 @@ const Contact = () => {
       });
   };
     return (
-        //Add text - to all text classes to provide dark mode support
   <section className="bg-white">
   <div className="max-w-[920px] my-6 mx-auto p-5  flex flex-col">
       <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 -white">Contacte-nos</h2>
@@ -51,17 +50,17 @@ const Contact = () => {
        ) : null}
           <div>
               <label className="block mb-2 text-sm font-medium text-gray-900 -gray-300">Nome</label>
-              <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)}  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 border-gray-600 placeholder-gray-400 -white focus:ring-primary-500 focus:border-primary-500 shadow-sm-light" placeholder="Deixe o seu nome" required/>
+              <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)}  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Deixe o seu nome" required/>
           </div>
           <div>
               <label  className="block mb-2 text-sm font-medium text-gray-900 -gray-300">Email</label>
-              <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}  className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 -gray-700 border-gray-600 placeholder-gray-400 -white focus:ring-primary-500 focus:border-primary-500 shadow-sm-light" placeholder="Deixe o seu email" required/>
+              <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}  className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500" placeholder="Deixe o seu email" required/>
           </div>
           <div className="sm:col-span-2">
               <label  className="block mb-2 text-sm font-medium text-gray-900 -gray-400">Mensagem</label>
-              <textarea id="message" name="message" value={message} onChange={(e) => setMessage(e.target.value)}  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 -gray-700 border-gray-600 placeholder-gray-400 -white focus:ring-primary-500 focus:border-primary-500" placeholder="Como podemos ajudar?" required></textarea>
+              <textarea id="message" name="message" value={message} onChange={(e) => setMessage(e.target.value)}  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Como podemos ajudar?" required></textarea>
           </div>
-          <button type="submit" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 -gray-800 -white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700">Enviar mensagem</button>
+          <button type="submit" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Enviar mensagem</button>
          </form>
   </div>
 </section>
