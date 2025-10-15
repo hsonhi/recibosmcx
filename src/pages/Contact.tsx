@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { API_ENDPOINT } from '../constants';
+
 const Contact = () => {
     const [responsemsg, setResponsemsg] = useState(false);
     const [name, setName] = useState('');
@@ -22,7 +24,7 @@ const Contact = () => {
     
 
      const resp = await axios
-      .post("http://localhost:5225/RecibosMCX/contactus", formData, {
+      .post(API_ENDPOINT+"/RecibosMCX/contactus", formData, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: null,
@@ -37,8 +39,8 @@ const Contact = () => {
   };
     return (
         //Add dark:text - to all text classes to provide dark mode support
-     <section className="bg-white dark:bg-gray-900">
-  <div className="py-8 lg:py-8 px-4 mx-auto max-w-screen-md">
+  <section className="bg-white dark:bg-gray-900">
+  <div className="max-w-[920px] my-6 mx-auto p-5  flex flex-col">
       <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 -white">Contacte-nos</h2>
       <p className="mb-8 lg:mb-16  text-center text-gray-500 -gray-400 sm:text-xl">Tem dúvidas acerca deste serviço? Entre em contacto connosco.</p>
       <form onSubmit={handleSubmit} className="space-y-8">

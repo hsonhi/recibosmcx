@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { API_ENDPOINT } from '../constants';
 import axios from "axios";
 import webserviceImg2 from "../assets/images/mxexpress.png";
 import QrImg from "../assets/images/qr.png";
@@ -13,10 +13,6 @@ import {
   faTimesCircle,
   faBars
 } from "@fortawesome/free-solid-svg-icons";
-
-const UPLOAD_ENDPOINT = "https://recibosmcx.bsite.net";
-
-
 
 function Home() {
   const [file, setFile] = useState<any>(null);
@@ -52,7 +48,7 @@ const itemArray = [
     formData.append("file", file);
 
     const resp = await axios
-      .post(UPLOAD_ENDPOINT + "/RecibosMCX/validate", formData, {
+      .post(API_ENDPOINT + "/RecibosMCX/validate", formData, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: null,
@@ -86,7 +82,7 @@ const itemArray = [
   // This effect runs once after the initial render (like componentDidMount)
   // and whenever its dependencies change (empty array means no dependencies, so it runs only once)
   const fetchData = async () => {
-    const response = await fetch(UPLOAD_ENDPOINT + "/RecibosMCX/requests");
+    const response = await fetch(API_ENDPOINT + "/RecibosMCX/requests");
     const data = await response.json();
     setRequests(data.length); 
   };
@@ -200,8 +196,8 @@ const itemArray = [
           <p  className="text-[#ddd]">
             <FontAwesomeIcon icon={faExternalLink} />
             &nbsp;
-            <a href={UPLOAD_ENDPOINT + "/swagger"} target="_blank">
-              <b>{UPLOAD_ENDPOINT + "/swagger"}</b>
+            <a href={API_ENDPOINT + "/swagger"} target="_blank">
+              <b>{API_ENDPOINT + "/swagger"}</b>
             </a>
           </p>
         </div>

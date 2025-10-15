@@ -1,16 +1,14 @@
-import React from 'react';
-
 const About = () => {
     return (
-       //Add  - to all text classes to provide dark mode support
-          <section className="bg-white dark:bg-gray-900">
-  <div className="py-8 lg:py-8 px-4 mx-auto max-w-screen-md">
-      <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 -white">Sobre a RecibosMCX</h2>
-       <p className=" text-gray-800 -gray-400 text-[16px] mt-3">A RecibosMCX é uma plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS. O mesmo é um projecto pessoal que visa ser um ponto de referência na autenticidade de comprovativos a fim de evitar prejuízos fruto de transferências falsas e desonestas.</p>
-          <p className=' text-gray-800 -gray-400 mt-4'>Pretendemos prestar um serviço de qualidade de forma rápida, simples e totalmente confiável. A validação de comprovativos é gratuita e de acesso livre, não sendo necessário qualquer tipo de registo ou autenticação para a sua utilização.</p>
+ //Add dark:text - to all text classes to provide dark mode support
+ <section className="bg-white dark:bg-gray-900">
+  <div className="max-w-[920px] my-6 mx-auto p-5  flex flex-col">
+       <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Sobre a RecibosMCX</h2>
+       <p className=" text-gray-800 dark:text-gray-400 text-[16px] mt-3">A RecibosMCX é uma plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS. O mesmo é um projecto pessoal que visa ser um ponto de referência na autenticidade de comprovativos a fim de evitar prejuízos fruto de transferências falsas e desonestas.</p>
+       <p className=' text-gray-800 dark:text-gray-400 mt-4'>Pretendemos prestar um serviço de qualidade de forma rápida, simples e totalmente confiável. A validação de comprovativos é gratuita e de acesso livre, não sendo necessário qualquer tipo de registo ou autenticação para a sua utilização.</p>
         
-        <h2 className=' text-gray-800 -gray-400 text-[24px] mt-6'> <b>Como funciona?</b></h2>
-        <ul className=" text-gray-800 -gray-400  list-image-[url(./assets/images/list-icon.png)] space-y-4 mt-4 text-[#333]  list-disc list-inside">
+        <h2 className=' text-gray-800 dark:text-gray-400 text-[24px] mt-6'> <b>Como funciona?</b></h2>
+        <ul className=" text-gray-800 dark:text-gray-400  list-image-[url(./assets/images/list-icon.png)] space-y-4 mt-4 text-[#333]  list-disc list-inside">
         <li>
          <b>Adicionar documento</b>
           <ol className="ps-5 mt-2 space-y-1 list-decimal list-inside">
@@ -27,12 +25,10 @@ const About = () => {
         </ul>
         </li>
         </ul>
-
-        <h2 className=' text-gray-800 -gray-400 text-[24px] mt-6'> <b>Webservice</b></h2>
-          <p className=" text-gray-800 -gray-400 text-[16px] mt-3">Oferecemos uma API de forma gratuita para automatizar tarefas exigentes, a mesma dispõe de alta disponibilidade e baixa latência.</p>
-        </div>
-        </section>
+        <h2 className=' text-gray-800 dark:text-gray-400 text-[24px] mt-6'> <b>Webservice</b></h2>
+          <p className=" text-gray-800 dark:text-gray-400 text-[16px] mt-3">Oferecemos uma API de forma gratuita para automatizar tarefas exigentes, a mesma dispõe de alta disponibilidade e baixa latência.</p>
+    </div>
+  </section>
     );
 };
-
 export default About;
