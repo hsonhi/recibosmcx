@@ -94,16 +94,14 @@ const itemArray = [
     <div className="mt-8 px-4">
      {/* <p className="mx-auto max-w-[920px] text-[16px] text-center text-[#333] font-normal mt-3">
         A RecibosMCX é uma plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS.</p> 
-     */}
+     */}<p className="mx-auto max-w-[920px] text-center text-gray-800 text-[16px] mt-3">Plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS.</p>
+       
      <main className="text-center max-w-[920px] border my-6 mx-auto p-5 bg-[#222124] flex flex-col rounded-[10px]">
         <div>
           <h1 className="text-[24px] text-[#ddd] font-medium">
             Adicionar documento
           </h1>
-            <h1 className="text-3xl font-bold text-center text-up mt-2">
-      <img src={webserviceImg2} alt="MCX Express" className=" inline" width={64} />
-     
-      </h1>
+            <h1 className="text-3xl font-bold text-center text-up mt-2"><img src={webserviceImg2} alt="MCX Express" className=" inline" width={64} /></h1>
         </div>
         <div className="overflow-x-auto">
           {isNotFoundVisible ? (
