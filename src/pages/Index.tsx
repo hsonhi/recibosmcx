@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { API_ENDPOINT } from '../constants';
 import axios from "axios";
-import webserviceImg2 from "../assets/images/mxexpress.png";
-import QrImg from "../assets/images/qr.png";
+import mxexpress from "../assets/images/mxexpress.png";
+import qr from "../assets/images/qr.png";
  
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faExternalLink,
+  faCode,
   faCheckDouble,
   faTimes,
-  faSpinner,
-  faTimesCircle,
-  faBars
+  faSpinner
 } from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
@@ -26,18 +25,6 @@ function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [requests, setRequests] = useState(0);
 
-
-const itemArray = [
-  { title: 'Início', url: './' },
-  { title: 'Sobre Nós', url: '/about' },
-  { title: 'Contactos', url: '/contact' },
-];
-
- const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    setIsOpen((prev) => !prev);
-  };
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setStatus(""); 
@@ -89,19 +76,16 @@ const itemArray = [
   fetchData(); 
   //}, []); // Empty dependency array ensures this effect runs only once after initial render
 
-
   return (
     <div className="mt-8 px-4">
-     {/* <p className="mx-auto max-w-[920px] text-[16px] text-center text-[#333] font-normal mt-3">
-        A RecibosMCX é uma plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS.</p> 
-     */}<p className="mx-auto max-w-[920px] text-center text-gray-800 text-[16px] mt-3">Plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS.</p>
+    <p className="mx-auto max-w-[920px] text-center text-gray-800 text-[16px] mt-3">Plataforma de validação de comprovativos de transferências bancárias emitidas pelo aplicativo MULTICAIXA EXPRESS.</p>
        
      <main className="text-center max-w-[920px] border my-6 mx-auto p-5 bg-[#222124] flex flex-col rounded-[10px]">
         <div>
           <h1 className="text-[24px] text-[#ddd] font-medium">
-            Adicionar documento
+            Adicionar comprovativo
           </h1>
-            <h1 className="text-3xl font-bold text-center text-up mt-2"><img src={webserviceImg2} alt="MCX Express" className=" inline" width={64} /></h1>
+            <h1 className="text-3xl font-bold text-center text-up mt-2"><img src={mxexpress} alt="MCX Express" className=" inline" width={64} /></h1>
         </div>
         <div className="overflow-x-auto">
           {isNotFoundVisible ? (
@@ -178,7 +162,7 @@ const itemArray = [
            Acesse pelo seu telemóvel
           </h1>
            <h1 className="text-[24px] text-center bold mt-3">
-          <img src={QrImg} alt="MCX Express" className=" text-[#fff] bg-white mb-4 inline rounded-[10px]" width={124} />
+          <img src={qr} alt="MCX Express" className=" text-[#fff] bg-white mb-4 inline rounded-[10px]" width={124} />
           </h1>
        </div>
       </div>
@@ -189,20 +173,16 @@ const itemArray = [
         <div>
           <h1 className="text-[24px] text-[#ddd] font-medium">WebService</h1>
           <p className="text-[16px] text-[#ddd] font-normal mt-1 mb-5">
-           Se pretende automatizar as suas tarefas faça o uso do seguinte serviço.
+           Se pretende automatizar este serviço faça o uso da nossa webservice de forma gratuita.
           </p>
-          <p  className="text-[#ddd]">
-            <FontAwesomeIcon icon={faExternalLink} />
-            &nbsp;
-            <a href={API_ENDPOINT + "/swagger"} target="_blank">
-              <b>{API_ENDPOINT + "/swagger"}</b>
-            </a>
+          <p className="text-[#ddd]">
+            <Link to='./about#webservice'><FontAwesomeIcon icon={faCode} />
+            &nbsp;WebService</Link>
           </p>
         </div>
       </main>
      </div>
   );
 }
-
 
 export default Home;

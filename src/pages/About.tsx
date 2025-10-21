@@ -1,3 +1,8 @@
+import { API_ENDPOINT } from '../constants';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faExternalLink
+} from "@fortawesome/free-solid-svg-icons";
 const About = () => {
     return (
  <section className="bg-white">
@@ -11,7 +16,7 @@ const About = () => {
         <li>
          <b>Adicionar documento</b>
           <ol className="ps-5 mt-2 space-y-1 list-decimal list-inside">
-            <li>Na página inicial, navegar até a sessão <b>Adicionar documento</b>.</li>
+            <li>Na página inicial, navegar até a sessão <b>Adicionar comprovativo</b>.</li>
             <li>Em seguida selecionar a opção 'Escolher ficheiro', selecionar o comprovativo por validar, somente documentos em formato <b>.PDF</b> com um tamanho inferior a <b>2MB</b> serão validados.</li>
             <li>Em seguida clicar em validar.</li>
           </ol>
@@ -24,8 +29,14 @@ const About = () => {
         </ul>
         </li>
         </ul>
-        <h2 className=' text-gray-800 text-[24px] mt-6'> <b>Webservice</b></h2>
-          <p className=" text-gray-800 text-[16px] mt-3">Oferecemos uma API de forma gratuita para automatizar tarefas exigentes, a mesma dispõe de alta disponibilidade e baixa latência.</p>
+        <h2 className=' text-gray-800 text-[24px] mt-6' id="webservice"> <b>Webservice</b></h2>
+          <p className="mb-2 text-gray-800 text-[16px] mt-3">Oferecemos um serviço de integração para agilizar o processo de validação de comprovativos com a nossa plataforma, o mesmo dispõe de alta disponibilidade e baixa latência.</p>
+            <p>
+            <FontAwesomeIcon icon={faExternalLink} />&nbsp;
+             <a href={API_ENDPOINT + "/swagger"} target="_blank">
+                  <b>{API_ENDPOINT + "/swagger"}</b>
+                </a>
+          </p>
     </div>
   </section>
     );
