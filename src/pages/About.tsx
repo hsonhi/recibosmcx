@@ -1,8 +1,3 @@
-import { API_ENDPOINT } from '../constants';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faExternalLink
-} from "@fortawesome/free-solid-svg-icons";
 const About = () => {
     return (
  <section className="bg-white">
@@ -29,14 +24,6 @@ const About = () => {
         </ul>
         </li>
         </ul>
-        <h2 className=' text-gray-800 text-[24px] mt-6' id="webservice"> <b>Webservice</b></h2>
-          <p className="mb-2 text-gray-800 text-[16px] mt-3">Oferecemos um serviço de integração para agilizar o processo de validação de comprovativos com a nossa plataforma, o mesmo dispõe de alta disponibilidade e baixa latência.</p>
-            <p>
-            <FontAwesomeIcon icon={faExternalLink} />&nbsp;
-             <a href={API_ENDPOINT + "/swagger"} target="_blank">
-                  <b>{API_ENDPOINT + "/swagger"}</b>
-                </a>
-          </p>
     </div>
   </section>
     );

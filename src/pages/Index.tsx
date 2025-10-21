@@ -176,7 +176,7 @@ function Home() {
            Se pretende automatizar este serviço faça o uso da nossa webservice de forma gratuita.
           </p>
           <p className="text-[#ddd]">
-            <Link to='./about#webservice'><FontAwesomeIcon icon={faCode} />
+            <Link to={API_ENDPOINT + "/swagger"} target="_blank"><FontAwesomeIcon icon={faCode} />
             &nbsp;WebService</Link>
           </p>
         </div>
