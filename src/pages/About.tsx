@@ -14,7 +14,7 @@ const About = () => {
         <h2 className=' text-gray-800 text-[24px] mt-6'> <b>Como funciona?</b></h2>
         <ul className=" text-gray-800 list-image-[url(./assets/images/list-icon.png)] space-y-4 mt-4 text-[#333]  list-disc list-inside">
         <li>
-         <b>Adicionar documento</b>
+         <b>Adicionar comprovativo</b>
           <ol className="ps-5 mt-2 space-y-1 list-decimal list-inside">
             <li>Na página inicial, navegar até a sessão <b>Adicionar comprovativo</b>.</li>
             <li>Em seguida selecionar a opção 'Escolher ficheiro', selecionar o comprovativo por validar, somente documentos em formato <b>.PDF</b> com um tamanho inferior a <b>2MB</b> serão validados.</li>
