@@ -5,11 +5,6 @@ const Privacy = () => {
                 <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">
                     Políticas de Privacidade
                 </h2>
-
-                <ul className="mb-4 text-center">
-                    <li className="text-2xl font-semibold">Política Privacidade</li>
-                </ul>
-
                 <p>
                     <span>
                         A sua privacidade é importante para nós. É política do RecibosMCX respeitar a sua
